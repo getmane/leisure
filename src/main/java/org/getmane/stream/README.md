@@ -1,1 +1,1 @@
-**Implement an upgraded FizzBuzzer that takes int/str map for point values to print and a delimiter**
+**Implement an upgraded FizzBuzzer that takes int/str map for point values to print and a delimiter (use streams only)**
