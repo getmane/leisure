@@ -2,11 +2,10 @@ package org.getmane.iterator;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
 
+import static org.getmane.iterator.IteratorTestUtils.getIterator;
+import static org.getmane.iterator.IteratorTestUtils.removeElements;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -58,16 +57,13 @@ class MultiIteratorTest {
     @Test
     void remove_MultipleIteratorsFilled_AllValuesRemoved() {
         // Given
-        int totalCount = 3;
+        int elemCount = 3;
         MultiIterator<Integer> multiIterator = new MultiIterator<>(
                 List.of(getIterator(1), getIterator(2), getIterator(3))
         );
 
         // When
-        for (int i = 0; i < totalCount; i++) {
-            multiIterator.next();
-            multiIterator.remove();
-        }
+        removeElements(elemCount, multiIterator);
 
         // Then
         assertFalse(multiIterator.hasNext());
@@ -76,22 +72,15 @@ class MultiIteratorTest {
     @Test
     void remove_MultipleIteratorsFilledWithMany_AllValuesRemoved() {
         // Given
-        int totalCount = 7;
+        int elemCount = 7;
         MultiIterator<Integer> multiIterator = new MultiIterator<>(
                 List.of(getIterator(1, 2), getIterator(3, 4), getIterator(5, 6, 7))
         );
 
         // When
-        for (int i = 0; i < totalCount; i++) {
-            multiIterator.next();
-            multiIterator.remove();
-        }
+        removeElements(elemCount, multiIterator);
 
         // Then
         assertFalse(multiIterator.hasNext());
-    }
-
-    private Iterator<Integer> getIterator(Integer... values) {
-        return new ArrayList<>(Arrays.asList(values)).iterator();
     }
 }

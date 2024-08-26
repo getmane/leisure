@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 
+import static org.getmane.iterator.IteratorTestUtils.getIterator;
+import static org.getmane.iterator.IteratorTestUtils.removeElements;
 import static org.junit.jupiter.api.Assertions.*;
 
 class DualIteratorTest {
@@ -60,23 +62,32 @@ class DualIteratorTest {
     @Test
     void remove_BothIteratorsFilled_AllValuesRemoved() {
         // Given
+        int elemCount = 2;
         DualIterator<Integer> dualIterator = new DualIterator<>(
                 getIterator(1),
                 getIterator(2)
         );
 
         // When
-        dualIterator.next();
-        dualIterator.remove();
-
-        dualIterator.next();
-        dualIterator.remove();
+        removeElements(elemCount, dualIterator);
 
         // Then
         assertFalse(dualIterator.hasNext());
     }
 
-    private Iterator<Integer> getIterator(Integer... values) {
-        return new ArrayList<>(Arrays.asList(values)).iterator();
+    @Test
+    void remove_BothIteratorsFilledWithMany_AllValuesRemoved() {
+        // Given
+        int elemCount = 5;
+        DualIterator<Integer> dualIterator = new DualIterator<>(
+                getIterator(1, 2),
+                getIterator(3, 4, 5)
+        );
+
+        // When
+        removeElements(elemCount, dualIterator);
+
+        // Then
+        assertFalse(dualIterator.hasNext());
     }
 }
