@@ -1,6 +1,5 @@
 package org.getmane.stream;
 
-import org.getmane.stream.FizzBuzzer;
 import org.junit.jupiter.api.Test;
 
 import java.util.LinkedHashMap;

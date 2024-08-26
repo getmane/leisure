@@ -2,10 +2,6 @@ package org.getmane.iterator;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-
 import static org.getmane.iterator.IteratorTestUtils.getIterator;
 import static org.getmane.iterator.IteratorTestUtils.removeElements;
 import static org.junit.jupiter.api.Assertions.*;
